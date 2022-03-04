@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzk.dao.ExpressMessageMapper">
+	<resultMap type="com.zzk.bean.ExpressMessage"
+		id="expressMessageMap">
+		<result property="receiveTelephone" column="recieveTelephone" />
+		<result property="receiveCompary" column="recieveCompary" />
+	</resultMap>
+
+	<insert id="insertExpress"
+		parameterType="com.zzk.bean.ExpressMessage">
+		insert into tb_receivesendmessage
+		(sendName,sendTelephone,sendCompary,sendAddress,sendPostcode,receiveName,recieveTelephone,recieveCompary,receiveAddress,receivePostcode,ControlPosition,expressSize)
+		values(#{sendName},#{sendTelephone},#{sendCompary},#{sendAddress},#{sendPostcode},#{receiveName},#{receiveTelephone},#{receiveCompary},#{receiveAddress},#{receivePostcode},#{ControlPosition},#{expressSize})
+	</insert>
+
+	<update id="updateExpress"
+		parameterType="com.zzk.bean.ExpressMessage">
+		update tb_receivesendmessage set
+		sendName=#{sendName},sendTelephone=#{sendTelephone},sendCompary=#{sendCompary},sendAddress=#{sendAddress},sendPostcode=#{sendPostcode},receiveName=#{receiveName},recieveTelephone=#{receiveTelephone},recieveCompary=#{receiveCompary},receiveAddress=#{receiveAddress},receivePostcode=#{receivePostcode},ControlPosition=#{ControlPosition},expressSize=#{expressSize}
+		where id=#{id}
+	</update>
+
+	<select id="queryAllExpress" resultMap="expressMessageMap">
+		select * from
+		tb_receivesendmessage
+	</select>
+
+</mapper>
